@@ -181,6 +181,7 @@
 import { useEffect, useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { generateTimeSlots, isPastDateTime } from '@/lib/timeUtils'
+import { useApp } from '@/app/contexts/AppContext'
 
 type Doctor = {
   id: string
@@ -189,6 +190,7 @@ type Doctor = {
 }
 
 export default function BookingPage() {
+  const { t } = useApp()
   const [doctors, setDoctors] = useState<Doctor[]>([])
   const [selectedDoctor, setSelectedDoctor] = useState('')
   const [type, setType] = useState('')
@@ -284,10 +286,10 @@ export default function BookingPage() {
               className="w-full border px-4 py-2 rounded"
             >
               <option value="">-- Select Treatment --</option>
-              <option value="VIDEO_CALL">Video Call</option>
-              <option value="CLEANING">Cleaning</option>
-              <option value="ORTHODONTIC">Orthodontic</option>
-              <option value="AI_DIAGNOSIS">AI Diagnosis</option>
+              <option value="VIDEO_CALL">{t('treatment.VIDEO_CALL')}</option>
+              <option value="CLEANING">{t('treatment.CLEANING')}</option>
+              <option value="ORTHODONTIC">{t('treatment.ORTHODONTIC')}</option>
+              <option value="AI_DIAGNOSIS">{t('treatment.AI_DIAGNOSIS')}</option>
             </select>
           </div>
 
